@@ -10,6 +10,15 @@ describe('Basico de Cypress',()=>{
             .should('be.equal','Campo de Treinamento') //estrutura padrao de assertivas (usando should ao inves de expect)
         
         
+    cy.get('#buttonSimple')
+        .click()
+
+    cy.get('#formNome')
+        .type('joao')
+        .should('have.value','joao')
         
+    
     })
 })
+
+
