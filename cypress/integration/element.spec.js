@@ -1,10 +1,13 @@
 /// <reference types ="cypress"/>
 
+before(()=>{
+    cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+})
 
 describe('elementos basicos',() =>{
 
-    it('texto', ()=> {
-        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+    it('texto', ()=> {  
+        
         cy.get('span')                  // utiliza jquery pra pegar um determinado elemento
         .should('contain',"Cuidado")
 
@@ -27,5 +30,30 @@ describe('elementos basicos',() =>{
     it('usando have text pra procurar frase',()=>{
         cy.get('.facilAchar')
         .should('have.text', 'Cuidado onde clica, muitas armadilhas...')       //so aceita frase completa  
+    })
+
+
+    describe('testando links',()=>{
+        it('link',()=>{
+            cy.get('[href="#"]')
+            .click()
+       
+        })
+        it('validando se funcionou o link',()=>{
+            cy.get('#resultado')
+            .should('have.text','Voltou!')
+        })
+
+
+    })
+
+    describe('testando links usando contains e reload',()=>{
+        it('contains/ reload',()=>{
+            cy.reload()             //refresh na pagina
+            cy.get('#resultado').should('have.not.text','Voltou!')
+            cy.contains('Voltar').click()
+            cy.get('#resultado').should('have.text','Voltou!')
+        })
+
     })
 })
