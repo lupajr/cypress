@@ -1,11 +1,14 @@
 /// <reference types ="cypress"/>
 
-before(()=>{
-    cy.visit('https://www.wcaquino.me/cypress/componentes.html')
-})
+
 
 describe('elementos basicos',() =>{
 
+    before(()=>{
+        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+    })
+
+    
     it('texto', ()=> {  
         
         cy.get('span')                  // utiliza jquery pra pegar um determinado elemento
