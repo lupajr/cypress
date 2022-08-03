@@ -33,4 +33,23 @@ describe('radio button',()=>{
             .click({multiple: true})                        //clicar em mais de uma checkbox
         })
     })
+
+
+    describe('Combo box',()=>{
+        it('combo box',()=>{
+            cy.get('[data-test=dataEscolaridade]')
+            .select('2o grau completo')                             // pra usar no combo box, se usa select7
+            .should('have.value','2graucomp')                          // no codigo html, o value ta diferente do select
+            
+
+            cy.get('[data-test=dataEscolaridade]')
+            .select('1graucomp')                                //posso usar select tanto com o value quanto o id
+        })
+
+
+        it('testando combo box multiple ',()=>{
+            cy.get('[data-testid=dataEsportes]')                   
+            .select(['natacao','Corrida','Karate'])              //pra selecionar mais de um valor, tem q usar array
+        })
+    })
 })
