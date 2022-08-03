@@ -4,9 +4,9 @@
 
 describe('elementos basicos',() =>{
 
-    before(()=>{
-        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
-    })
+    beforeEach(()=>{
+        cy.visit('https://www.wcaquino.me/cypress/componentes.html')        
+    })                                                                      
 
     
     it('texto', ()=> {  
@@ -37,12 +37,12 @@ describe('elementos basicos',() =>{
 
 
     describe('testando links',()=>{
+
+        
         it('link',()=>{
+            cy.reload
             cy.get('[href="#"]')
-            .click()
-       
-        })
-        it('validando se funcionou o link',()=>{
+            .click()          
             cy.get('#resultado')
             .should('have.text','Voltou!')
         })
@@ -53,9 +53,14 @@ describe('elementos basicos',() =>{
     describe('testando links usando contains e reload',()=>{
         it('contains/ reload',()=>{
             cy.reload()             //refresh na pagina
-            cy.get('#resultado').should('have.not.text','Voltou!')
-            cy.contains('Voltar').click()
-            cy.get('#resultado').should('have.text','Voltou!')
+            cy.get('#resultado')
+            .should('have.not.text','Voltou!')
+            
+            cy.contains('Voltar')
+            .click()
+            
+            cy.get('#resultado')
+            .should('have.text','Voltou!')
         })
 
     })
