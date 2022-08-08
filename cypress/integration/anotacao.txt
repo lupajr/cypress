@@ -1,1 +1,7 @@
-nem todo comando tem retry
+### anotaçao
+
+- nem todo comando tem retry
+- should normalmente faz retry 
+- should fica sendo executado ao longo da espera
+- then espera pra ser executado so no final
+
