@@ -30,6 +30,16 @@ describe('Helpers',()=>{
            })   
     })
 
-    
+    it.only('invoke',()=>{
+        const getValue = ()=> 1
+        let soma =(a,b) => a+b
+        cy.wrap({fn:getValue}).invoke('fn').should('be.equal',1)    
+        cy.wrap({fm:soma}).invoke('fm', 2, 5).should('be.equal', 7)  //colocando parametros
+
+        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+        cy.get('#formNome').invoke('val','texto via invoke')            //printar usando invoke e jquery
+        cy.window().invoke('alert','meodeu')
+
+    })  
 
 })
